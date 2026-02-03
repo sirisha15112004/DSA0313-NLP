@@ -1,0 +1,50 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from nltk.corpus import wordnet
+
+# Download required resources (run once)
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger_eng')  # <-- make sure this is after import
+
+# Helper function to map POS tags for lemmatization
+def get_wordnet_pos(tag):
+    if tag.startswith('J'):
+        return wordnet.ADJ
+    elif tag.startswith('V'):
+        return wordnet.VERB
+    elif tag.startswith('N'):
+        return wordnet.NOUN
+    elif tag.startswith('R'):
+        return wordnet.ADV
+    else:
+        return wordnet.NOUN
+
+# Sample text
+text = "The striped bats are hanging on their feet for best performance"
+
+# Step 1: Tokenization
+tokens = word_tokenize(text)
+print("Tokens:", tokens)
+
+# Step 2: Stemming
+stemmer = PorterStemmer()
+stems = [stemmer.stem(token) for token in tokens]
+print("Stems:", stems)
+
+# Step 3: POS Tagging
+pos_tags = nltk.pos_tag(tokens)
+print("POS Tags:", pos_tags)
+
+# Step 4: Lemmatization with POS
+lemmatizer = WordNetLemmatizer()
+lemmas = [lemmatizer.lemmatize(token, get_wordnet_pos(tag)) for token, tag in pos_tags]
+print("Lemmas:", lemmas)
+
+Output:
+Tokens: ['The', 'striped', 'bats', 'are', 'hanging', 'on', 'their', 'feet', 'for', 'best', 'performance']
+Stems: ['the', 'stripe', 'bat', 'are', 'hang', 'on', 'their', 'feet', 'for', 'best', 'perform']
+POS Tags: [('The', 'DT'), ('striped', 'JJ'), ('bats', 'NNS'), ('are', 'VBP'), ('hanging', 'VBG'), ('on', 'IN'), ('their', 'PRP$'), ('feet', 'NNS'), ('for', 'IN'), ('best', 'JJS'), ('performance', 'NN')]
+Lemmas: ['The', 'striped', 'bat', 'be', 'hang', 'on', 'their', 'foot', 'for', 'best', 'performance']
