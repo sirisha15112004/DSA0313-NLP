@@ -1,0 +1,45 @@
+import re
+text = "Contact us at support@gmail.com or call 9876543210. Visit https://example.com for more info."
+print("Original Text:")
+print(text)
+print("-" * 50)
+
+# 1. Find all email addresses
+emails = re.findall(r'\b[\w.-]+@[\w.-]+\.\w+\b', text)
+print("Email Addresses Found:")
+print(emails)
+
+# 2. Find all phone numbers (10 digits)
+phones = re.findall(r'\b\d{10}\b', text)
+print("\nPhone Numbers Found:")
+print(phones)
+
+# 3. Search for a word
+word = re.search(r'Visit', text)
+if word:
+    print("\nWord 'Visit' found at position:", word.start())
+
+# 4. Match words starting with 's'
+s_words = re.findall(r'\bs\w*', text)
+print("\nWords starting with 's':")
+print(s_words)
+
+# 5. Replace URLs with a placeholder
+new_text = re.sub(r'https?://\S+', '[URL]', text)
+print("\nText after replacing URL:")
+print(new_text)
+
+Output :
+Email Addresses Found:
+['support@gmail.com']
+
+Phone Numbers Found:
+['9876543210']
+
+Word 'Visit' found at position: 52
+
+Words starting with 's':
+['support']
+
+Text after replacing URL:
+Contact us at support@gmail.com or call 9876543210. Visit [URL] for more info.
