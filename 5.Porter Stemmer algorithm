@@ -1,0 +1,28 @@
+# Import Porter Stemmer from NLTK
+from nltk.stem import PorterStemmer
+
+# Create Porter Stemmer object
+stemmer = PorterStemmer()
+
+# List of words
+words = ["running", "runs", "runner", "easily", "fairly", "playing", "played", "studies", "studying"]
+
+print("Original Words -> Stemmed Words\n")
+
+# Apply Porter Stemmer
+for word in words:
+    stem = stemmer.stem(word)
+    print(word, "->", stem)
+
+Output :
+Original Words -> Stemmed Words
+
+running -> run
+runs -> run
+runner -> runner
+easily -> easili
+fairly -> fairli
+playing -> play
+played -> play
+studies -> studi
+studying -> studi
