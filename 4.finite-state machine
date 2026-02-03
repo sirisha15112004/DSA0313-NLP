@@ -1,0 +1,41 @@
+class PluralFSM:
+    def __init__(self):
+        self.state = "START"
+
+    def transition(self, word):
+        self.state = "CHECK"
+
+        # Rule 1: Words ending with s, x, z, ch, sh → add "es"
+        if word.endswith(("s", "x", "z", "ch", "sh")):
+            self.state = "ADD_ES"
+            return word + "es"
+
+        # Rule 2: Words ending with consonant + y → change y to ies
+        elif word.endswith("y") and word[-2] not in "aeiou":
+            self.state = "Y_TO_IES"
+            return word[:-1] + "ies"
+
+        # Rule 3: Default rule → add "s"
+        else:
+            self.state = "ADD_S"
+            return word + "s"
+# Test the FSM
+fsm = PluralFSM()
+
+words = ["cat", "bus", "box", "baby", "boy", "church", "dish"]
+
+print("Finite-State Machine for Plural Generation:\n")
+for w in words:
+    plural = fsm.transition(w)
+    print(f"Word: {w} → Plural: {plural} (State: {fsm.state})")
+
+Output :
+Finite-State Machine for Plural Generation:
+
+Word: cat → Plural: cats (State: ADD_S)
+Word: bus → Plural: buses (State: ADD_ES)
+Word: box → Plural: boxes (State: ADD_ES)
+Word: baby → Plural: babies (State: Y_TO_IES)
+Word: boy → Plural: boys (State: ADD_S)
+Word: church → Plural: churches (State: ADD_ES)
+Word: dish → Plural: dishes (State: ADD_ES)
