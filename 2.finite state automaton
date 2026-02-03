@@ -1,0 +1,32 @@
+def fsa_ends_with_ab(string):
+    state = 0  # initial state
+
+    for char in string:
+        if state == 0:
+            if char == 'a':
+                state = 1
+            else:
+                state = 0
+        elif state == 1:
+            if char == 'b':
+                state = 2
+            elif char == 'a':
+                state = 1
+            else:
+                state = 0
+
+    if state == 2:
+        return "Accepted (Ends with 'ab')"
+    else:
+        return "Rejected"
+# Test strings
+test_strings = ["cab", "ab", "aab", "abc", "b"]
+for s in test_strings:
+    print(s, "->", fsa_ends_with_ab(s))
+
+Output :
+cab -> Accepted (Ends with 'ab')
+ab -> Accepted (Ends with 'ab')
+aab -> Accepted (Ends with 'ab')
+abc -> Accepted (Ends with 'ab')
+b -> Rejected
