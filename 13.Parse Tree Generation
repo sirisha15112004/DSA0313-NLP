@@ -1,0 +1,15 @@
+import nltk
+grammar = nltk.CFG.fromstring("""
+S -> NP VP
+NP -> Det N
+VP -> V
+Det -> 'the'
+N -> 'cat'
+V -> 'runs'
+""")
+
+parser = nltk.ChartParser(grammar)
+for tree in parser.parse("the cat runs".split()):
+    print(tree)
+Output:
+(S (NP (Det the) (N cat)) (VP (V runs)))
