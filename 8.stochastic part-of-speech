@@ -1,0 +1,16 @@
+from collections import defaultdict, Counter
+
+data = [("the","DT"),("cat","NN"),("sat","VB"),("the","DT"),("dog","NN")]
+d = defaultdict(Counter)
+
+for w,t in data:
+    d[w][t] += 1
+
+def tag(word):
+    return d[word].most_common(1)[0][0] if word in d else "NN"
+
+sent = "the dog sat".split()
+print([(w, tag(w)) for w in sent])
+
+Output:
+[('the', 'DT'), ('dog', 'NN'), ('sat', 'VB')]
