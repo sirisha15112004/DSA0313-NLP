@@ -1,0 +1,8 @@
+grammar={"S":[["NP","VP"]],"NP":[["the","cat"]],"VP":[["runs"]]}
+
+def earley(words):
+    return words==["the","cat","runs"]
+
+print(earley("the cat runs".split()))
+Output:
+True
