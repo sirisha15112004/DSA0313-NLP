@@ -1,0 +1,14 @@
+import re
+
+def pos(word):
+    if re.match(r'.*ing$', word): return "VBG"
+    if re.match(r'.*ed$', word): return "VBD"
+    if re.match(r'.*ly$', word): return "RB"
+    if re.match(r'[A-Z].*', word): return "NNP"
+    return "NN"
+
+s="The cat is running quickly"
+print([(w,pos(w)) for w in s.split()])
+
+Output:
+[('The', 'NNP'), ('cat', 'NN'), ('is', 'NN'), ('running', 'VBG'), ('quickly', 'RB')]
