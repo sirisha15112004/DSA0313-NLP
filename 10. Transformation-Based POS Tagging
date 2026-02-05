@@ -1,0 +1,10 @@
+tags={"the":"DT","cat":"NN","runs":"VB"}
+
+def transform(word):
+    if word.endswith("s"): return "VB"
+    return tags.get(word,"NN")
+
+s="the cat runs"
+print([(w,transform(w)) for w in s.split()])
+Output:
+[('the', 'DT'), ('cat', 'NN'), ('runs', 'VB')]
