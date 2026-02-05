@@ -1,0 +1,22 @@
+import nltk
+from nltk.tokenize import word_tokenize
+
+# Download required resources
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
+# Sample text
+text = "The quick brown fox jumps over the lazy dog"
+
+# Tokenize text
+tokens = word_tokenize(text)
+
+# Perform POS tagging
+pos_tags = nltk.pos_tag(tokens)
+print("POS Tags:", pos_tags)
+
+output:
+Tokens: ['The', 'striped', 'bats', 'are', 'hanging', 'on', 'their', 'feet', 'for', 'best', 'performance']
+Stems: ['the', 'stripe', 'bat', 'are', 'hang', 'on', 'their', 'feet', 'for', 'best', 'perform']
+POS Tags: [('The', 'DT'), ('striped', 'JJ'), ('bats', 'NNS'), ('are', 'VBP'), ('hanging', 'VBG'), ('on', 'IN'), ('their', 'PRP$'), ('feet', 'NNS'), ('for', 'IN'), ('best', 'JJS'), ('performance', 'NN')]
+Lemmas: ['The', 'striped', 'bat', 'be', 'hang', 'on', 'their', 'foot', 'for', 'best', 'performance']
