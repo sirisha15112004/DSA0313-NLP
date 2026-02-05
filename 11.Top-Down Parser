@@ -1,0 +1,16 @@
+grammar={
+"S":[["NP","VP"]],
+"NP":[["Det","N"]],
+"VP":[["V"]],
+"Det":[["the"]],
+"N":[["cat"]],
+"V":[["runs"]]
+}
+
+def parse(sym,words):
+    if sym not in grammar: return [words[1:]] if words and words[0]==sym else []
+    return [r for rule in grammar[sym] for r in parse(rule[0],words)]
+
+print(parse("S","the cat runs".split())!=[])
+Output:
+True
