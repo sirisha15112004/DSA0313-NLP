@@ -1,0 +1,11 @@
+def agree(sent):
+    s=sent.split()
+    if s[0]=="he" and s[1].endswith("s"): return True
+    if s[0]=="they" and not s[1].endswith("s"): return True
+    return False
+
+print(agree("he runs"))
+print(agree("they run"))
+Output:
+True
+True
