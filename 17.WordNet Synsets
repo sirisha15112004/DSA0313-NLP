@@ -1,0 +1,11 @@
+from nltk.corpus import wordnet as wn
+
+word = "bank"
+synsets = wn.synsets(word)
+
+for s in synsets[:3]:
+    print(s.name(), ":", s.definition())
+Output:
+bank.n.01 : sloping land (especially the slope beside a body of water)
+depository_financial_institution.n.01 : a financial institution that accepts deposits and channels the money into lending activities
+bank.n.03 : a long ridge or pile
