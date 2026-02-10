@@ -1,0 +1,13 @@
+import re
+
+def parse_fopc(expr):
+    pattern = r'(\w+)\((\w+)\)'
+    match = re.match(pattern, expr)
+    if match:
+        print("Predicate:", match.group(1))
+        print("Argument:", match.group(2))
+
+parse_fopc("Human(Socrates)")
+Output:
+Predicate: Human
+Argument: Socrates
