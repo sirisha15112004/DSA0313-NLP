@@ -1,0 +1,26 @@
+def dialog_act(sentence):
+    sentence = sentence.lower()
+    
+    if sentence.endswith("?"):
+        return "Question"
+    elif sentence.startswith(("please", "do", "can you")):
+        return "Request"
+    elif sentence in ["hello", "hi", "good morning"]:
+        return "Greeting"
+    else:
+        return "Statement"
+
+conversation = [
+    "Hello",
+    "Can you help me?",
+    "Please send the file",
+    "I finished the work"
+]
+
+for line in conversation:
+    print(f"{line} --> {dialog_act(line)}")
+Output:
+Hello --> Greeting
+Can you help me? --> Question
+Please send the file --> Request
+I finished the work --> Statement
