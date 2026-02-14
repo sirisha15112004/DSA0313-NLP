@@ -1,0 +1,12 @@
+from deep_translator import GoogleTranslator
+
+# Input text
+text = "Artificial Intelligence is changing the world."
+
+# Translate English to French
+translated = GoogleTranslator(source='en', target='fr').translate(text)
+
+print("French Translation:", translated)
+
+Output:
+French Translation: L'intelligence artificielle change le monde.
