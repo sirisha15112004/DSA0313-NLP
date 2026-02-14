@@ -1,0 +1,13 @@
+from sentence_transformers import SentenceTransformer, util
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+s1 = "The dog is playing."
+s2 = "The dog runs in the park."
+
+emb = model.encode([s1, s2])
+score = util.cos_sim(emb[0], emb[1])
+
+print("Coherence Score:", float(score))
+Output:
+Coherence Score: 0.508054792881012
