@@ -1,0 +1,19 @@
+import re
+
+text = "John went to the market. He bought fruits."
+
+# Simple replacement rule
+resolved_text = re.sub(r"\bHe\b", "John", text)
+
+print("Original Text:")
+print(text)
+
+print("\nResolved Text:")
+print(resolved_text)
+
+Output:
+Original Text:
+John went to the market. He bought fruits.
+
+Resolved Text:
+John went to the market. John bought fruits.
